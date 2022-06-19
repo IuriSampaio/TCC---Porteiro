@@ -2,9 +2,9 @@ import numpy as np
 import face_recognition as fr
 import cv2
 from engine import get_rostos
+from get_image_from_sn import get_rostos_from_sn
 
-rostos_conhecidos, nomes_dos_rostos = get_rostos()
-
+rostos_conhecidos, nomes_dos_rostos = get_rostos_from_sn()
 print(rostos_conhecidos, nomes_dos_rostos)
 
 video_capture = cv2.VideoCapture(0)
@@ -25,7 +25,7 @@ while True:
         melhor_id = np.argmin(face_distances)
         if resultados[melhor_id]:
             nome = nomes_dos_rostos[melhor_id]
-        else:   
+        else:
             nome = "Desconhecido"
         
         # Ao redor do rosto
